@@ -67,28 +67,54 @@ button:focus-visible {
   }
 }
 
-
-.home {
-  color: red;
-  font-size: 30px;
-  margin-right: 10px;
-  margin-left: 20px;
+/* Анімація градієнтного фону */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.movie {
-color: black;
-font-size: 30px;
-
-}
-
+/* Стили для заголовка */
 .header {
-
+  background: linear-gradient(270deg, #ff7e5f, #feb47b);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
+  padding: 20px;
+  text-align: center;
 }
 
-.container {
+/* Стили для навигации */
+.navigation {
   display: flex;
-  width: 1200px;
+  justify-content: center;
+  gap: 20px;
+}
 
-  border: 1px black solid;
-  background-color: darkgray;
+/* Стили для ссылок */
+.home,
+.movie {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.home:hover,
+.movie:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Стили для активной ссылки */
+.home.active,
+.movie.active {
+  background-color: rgba(255, 255, 255, 0.3);
 }
