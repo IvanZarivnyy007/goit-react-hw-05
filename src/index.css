@@ -66,3 +66,77 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.movie_list_title {
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  animation: gradientBackground 5s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0;
+}
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.popular-movies {
+  background-color: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* .movie_list_overview {
+  font-size: 10px;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-align: center;
+  display: inline-block;
+  border-radius: 5px solid black;
+} */
+
+.movie_list_overview {
+  font-size: 10px;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-align: center;
+  display: inline-block;
+  border-radius: 5px;
+  animation: blinkText 2s infinite;
+}
+
+@keyframes blinkText {
+  0% {
+    color: #1a1a1a;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: #1a1a1a;
+  }
+}

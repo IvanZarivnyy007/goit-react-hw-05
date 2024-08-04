@@ -19,8 +19,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// import MovieCast from './components/MovieCast';
-// import MovieList from './components/MovieList/MovieList';
-// import MovieReviews from './components/MovieReviews/MovieReviews';
-// import Navigation from './components/Navigation/Navigation';
