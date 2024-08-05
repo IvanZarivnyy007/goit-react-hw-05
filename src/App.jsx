@@ -11,19 +11,22 @@ const MovieReviews = lazy(() =>
 );
 
 import Navigation from './components/Navigation/Navigation.jsx';
+// import { getMovieDetails } from './api/getFilms.js';
 
 function App() {
+  // getMovieDetails(848326);
   return (
     <div>
       <Navigation />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviePage />}>
-            <Route path="/movies:moviesId" element={<MovieDetailsPage />} />
+          <Route path="/movies" element={<MoviePage />} />
+          <Route path="/movies/:moviesId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

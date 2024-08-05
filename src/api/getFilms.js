@@ -15,9 +15,9 @@ export async function getTrendingMovie() {
   return res.data;
 }
 
-export async function getMovieSearch(a) {
+export async function getMovieSearch(search) {
   const baseURL = 'https://api.themoviedb.org';
-  const endPoint = `/3/search/movie?query=${a}`;
+  const endPoint = `/3/search/movie?query=${search}`;
   const url = baseURL + endPoint;
   const apiToken =
     'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NDExNDY0NjYzNzA3NzdiYTY0OTNlMWVkYzk5Mjc5ZSIsIm5iZiI6MTcyMjc4NjU1MS45NTc0OSwic3ViIjoiNjYxNzE4NjVjYzk2ODMwMTg2NGM2Nzg5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.uvp3phKOn4WmbNUjNBmhvOI-8Tgc_QFlBG8eDuPnhCc';
@@ -32,7 +32,7 @@ export async function getMovieSearch(a) {
 
 export async function getMovieDetails(movieId) {
   const baseURL = 'https://api.themoviedb.org';
-  const endPoint = `/3/search/movie/${movieId}`;
+  const endPoint = `/3/movie/${movieId}`;
   const url = baseURL + endPoint;
   const apiToken =
     'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NDExNDY0NjYzNzA3NzdiYTY0OTNlMWVkYzk5Mjc5ZSIsIm5iZiI6MTcyMjc4NjU1MS45NTc0OSwic3ViIjoiNjYxNzE4NjVjYzk2ODMwMTg2NGM2Nzg5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.uvp3phKOn4WmbNUjNBmhvOI-8Tgc_QFlBG8eDuPnhCc';

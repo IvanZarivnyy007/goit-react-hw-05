@@ -9,7 +9,6 @@ const HomePage = () => {
   useEffect(() => {
     getTrendingMovie()
       .then((data) => {
-        console.log(data);
         SetMovie(data.results);
       })
       .catch((error) => {

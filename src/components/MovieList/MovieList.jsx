@@ -13,7 +13,7 @@ const MovieList = ({ movies }) => {
         renderItem={(item) => (
           <List.Item>
             <li key={item.id}>
-              <Link to={`/movies/${item.id}`}>
+              <Link to={`/movies/${item.id}`} state={{ from: location }}>
                 {' '}
                 <FcFilm />
                 <p className="movie_list_title">{item.title}</p>
@@ -27,5 +27,4 @@ const MovieList = ({ movies }) => {
   );
 };
 
-// state = {{from:location}}
 export default MovieList;

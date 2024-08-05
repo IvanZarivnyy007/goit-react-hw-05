@@ -9,7 +9,7 @@ const Navigation = () => {
           <NavLink to="/" className={css.home}>
             Home
           </NavLink>
-          <NavLink to="/movie" className={css.movie}>
+          <NavLink to="/movies" className={css.movie}>
             Movie
           </NavLink>
         </nav>
