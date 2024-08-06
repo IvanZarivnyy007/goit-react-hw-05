@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from '../api/getFilms';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { IoMdReturnLeft } from 'react-icons/io';
 
-const MovieDetailsPage = ({}) => {
+const MovieDetailsPage = () => {
   const [movies, SetMovie] = useState({});
-  // const location = useLocation();
+  const location = useLocation();
   const { moviesId } = useParams();
 
   useEffect(() => {
     getMovieDetails(moviesId)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         SetMovie(data);
       })
       .catch((error) => {
@@ -18,15 +19,26 @@ const MovieDetailsPage = ({}) => {
       });
   }, [moviesId]);
 
+  const style = { size: '120px', padding: '5px' };
+
   return (
     <>
-      <NavLink to="/">Go to Home page</NavLink>;
+      <span className="span-link">
+        <IoMdReturnLeft style={style} />
+        <NavLink to="/">Go to Home page</NavLink>
+      </span>
+
       <div className="movie-card">
         <img
+          className="poster"
+          src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+          alt={`${movies.title} poster`}
+        />
+        {/* <img
           className="backdrop"
           src={`https://image.tmdb.org/t/p/w500${movies.backdrop_path}`}
           alt={`${movies.title} backdrop`}
-        />
+        /> */}
         <div className="content">
           <h2 className="title">{movies.title}</h2>
           <p className="original-title">{movies.original_title}</p>
@@ -41,14 +53,14 @@ const MovieDetailsPage = ({}) => {
           ))}
           s
         </div> */}
-          <img
-            className="poster"
-            src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
-            alt={`${movies.title} poster`}
-          />
         </div>
-        {/* <NavLink to={`/movies/${movieId}/cast`}>Movie Cast</NavLink>
-      <NavLink to={`/movies/${movieId}/reviews`}>Movie Reviews</NavLink> */}
+      </div>
+      <div className="additional-container">
+        <p className="additional-text">Additional Information</p>
+        <div className="navlink-movie">
+          <NavLink to={`/movies/${moviesId}/cast`}> Cast</NavLink>
+          <NavLink to={`/movies/${moviesId}/reviews`}>Reviews</NavLink>
+        </div>
         <Outlet />
       </div>
     </>

@@ -5,16 +5,17 @@ import { GiFilmProjector } from 'react-icons/gi';
 
 const HomePage = () => {
   const [movies, SetMovie] = useState([]);
+  const { moviesId } = useParams();
 
   useEffect(() => {
-    getTrendingMovie()
+    getTrendingMovie(moviesId)
       .then((data) => {
-        SetMovie(data.results);
+        SetMovie(data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [moviesId]);
 
   const style = { color: 'red', size: '90px' };
 
