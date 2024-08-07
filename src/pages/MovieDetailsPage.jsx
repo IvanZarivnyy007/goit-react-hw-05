@@ -11,7 +11,7 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     getMovieDetails(moviesId)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         SetMovie(data);
       })
       .catch((error) => {
@@ -34,25 +34,13 @@ const MovieDetailsPage = () => {
           src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
           alt={`${movies.title} poster`}
         />
-        {/* <img
-          className="backdrop"
-          src={`https://image.tmdb.org/t/p/w500${movies.backdrop_path}`}
-          alt={`${movies.title} backdrop`}
-        /> */}
+
         <div className="content">
           <h2 className="title">{movies.title}</h2>
           <p className="original-title">{movies.original_title}</p>
           <p className="overview">{movies.overview}</p>
           <p className="release-date">Release Date: {movies.release_date}</p>
           <p className="vote-average">Rating: {movies.vote_average}</p>
-          {/* <div className="genres">
-          {movies.genre_ids.map((id) => (
-            <span key={id} className="genre">
-              {genres[id]}
-            </span>
-          ))}
-          s
-        </div> */}
         </div>
       </div>
       <div className="additional-container">
