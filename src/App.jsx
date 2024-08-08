@@ -11,10 +11,10 @@ const MovieReviews = lazy(() =>
 );
 
 import Navigation from './components/Navigation/Navigation.jsx';
-// import { getMovieDetails, getMovieCredits } from './api/getFilms.js';
+import { getMovieCredits } from './api/getFilms.js';
 
 function App() {
-  // getMovieCredits(848326);
+  getMovieCredits(848326);
   // getMovieDetails(848326);
   return (
     <div>

@@ -9,7 +9,7 @@ const MovieCast = () => {
   useEffect(() => {
     getMovieCredits(moviesId)
       .then((data) => {
-        SetMovie(data.cast[0]);
+        SetMovie(data.cast);
       })
       .catch((error) => {
         console.log(error);
@@ -19,20 +19,22 @@ const MovieCast = () => {
   return (
     <div className="movie-details">
       <div className="cast-section">
-        <h2>Actor</h2>
-        <div className="cast-list">
-          <div key={movies.id} className="actor-card">
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movies.profile_path}`}
-              alt={movies.name}
-              className="actor-photo"
-            />
-            <div className="actor-info">
-              <h3 className="actor-name">{movies.name}</h3>
-              <p className="actor-character">Character {movies.character}</p>
-            </div>
-          </div>
-        </div>
+        <h2>Actors</h2>
+        <ul className="cast-list">
+          {movies.map((movie) => (
+            <li key={movie.id} className="actor-card">
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.profile_path}`}
+                alt={movie.name}
+                className="actor-photo"
+              />
+              <div className="actor-info">
+                <h3 className="actor-name">{movie.name}</h3>
+                <p className="actor-character">Character {movie.character}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

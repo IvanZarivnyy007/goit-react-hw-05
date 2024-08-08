@@ -1,13 +1,16 @@
 import MovieList from '../components/MovieList/MovieList.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getMovieSearch } from '../api/getFilms.js';
+import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [movies, SetMovie] = useState([]);
   const [search, setSearch] = useState('');
+  const [seachParams, setSeachParams] = useSearchParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSeachParams({ name: search });
     getMovieSearch(search)
       .then((data) => {
         SetMovie(data.results);
@@ -16,6 +19,20 @@ const MoviesPage = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const q = seachParams.get('name');
+
+    if (q) {
+      getMovieSearch(q)
+        .then((data) => {
+          SetMovie(data.results);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
 
   return (
     <div>

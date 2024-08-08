@@ -6,6 +6,7 @@ import { IoMdReturnLeft } from 'react-icons/io';
 const MovieDetailsPage = () => {
   const [movies, SetMovie] = useState({});
   const location = useLocation();
+
   const { moviesId } = useParams();
 
   useEffect(() => {
@@ -21,11 +22,13 @@ const MovieDetailsPage = () => {
 
   const style = { size: '120px', padding: '5px' };
 
+  const backUrl = location.state.from;
+
   return (
     <>
       <span className="span-link">
         <IoMdReturnLeft style={style} />
-        <NavLink to="/">Go to Home page</NavLink>
+        <NavLink to={backUrl}>Go to Home page</NavLink>
       </span>
 
       <div className="movie-card">
