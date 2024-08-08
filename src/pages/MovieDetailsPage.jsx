@@ -22,13 +22,13 @@ const MovieDetailsPage = () => {
 
   const style = { size: '120px', padding: '5px' };
 
-  const backUrl = location.state.from;
+  // const backUrl = location.state.from;
 
   return (
     <>
       <span className="span-link">
         <IoMdReturnLeft style={style} />
-        <NavLink to={backUrl}>Go to Home page</NavLink>
+        <NavLink to="/">Go to Home page</NavLink>
       </span>
 
       <div className="movie-card">
