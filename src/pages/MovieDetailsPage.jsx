@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getMovieDetails } from '../api/getFilms';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { IoMdReturnLeft } from 'react-icons/io';
 
 const MovieDetailsPage = () => {
-  const [movies, SetMovie] = useState({});
+  const [movies, SetMovies] = useState({});
   const location = useLocation();
-
   const { moviesId } = useParams();
+  const ref = useRef(location.state?.from || '/');
 
   useEffect(() => {
     getMovieDetails(moviesId)
       .then((data) => {
-        // console.log(data);
-        SetMovie(data);
+        SetMovies(data);
       })
       .catch((error) => {
         console.log(error);
@@ -22,13 +21,11 @@ const MovieDetailsPage = () => {
 
   const style = { size: '120px', padding: '5px' };
 
-  // const backUrl = location.state.from;
-
   return (
     <>
       <span className="span-link">
         <IoMdReturnLeft style={style} />
-        <NavLink to="/">Go to Home page</NavLink>
+        <NavLink to={ref.current}>Go to Home page</NavLink>
       </span>
 
       <div className="movie-card">
@@ -49,8 +46,8 @@ const MovieDetailsPage = () => {
       <div className="additional-container">
         <p className="additional-text">Additional Information</p>
         <div className="navlink-movie">
-          <NavLink to={`/movies/${moviesId}/cast`}> Cast</NavLink>
-          <NavLink to={`/movies/${moviesId}/reviews`}>Reviews</NavLink>
+          <NavLink to="cast"> Cast</NavLink>
+          <NavLink to="reviews">Reviews</NavLink>
         </div>
         <Outlet />
       </div>

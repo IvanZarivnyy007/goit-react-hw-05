@@ -4,16 +4,16 @@ import { getMovieSearch } from '../api/getFilms.js';
 import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
-  const [movies, SetMovie] = useState([]);
+  const [movies, SetMovies] = useState([]);
   const [search, setSearch] = useState('');
-  const [seachParams, setSeachParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSeachParams({ name: search });
+    setSearchParams({ name: search });
     getMovieSearch(search)
       .then((data) => {
-        SetMovie(data.results);
+        SetMovies(data.results);
       })
       .catch((error) => {
         console.log(error);
@@ -21,18 +21,18 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
-    const q = seachParams.get('name');
+    const q = searchParams.get('name');
 
     if (q) {
       getMovieSearch(q)
         .then((data) => {
-          SetMovie(data.results);
+          SetMovies(data.results);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div>

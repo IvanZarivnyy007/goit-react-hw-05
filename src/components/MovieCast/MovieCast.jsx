@@ -30,7 +30,13 @@ const MovieCast = () => {
               />
               <div className="actor-info">
                 <h3 className="actor-name">{movie.name}</h3>
-                <p className="actor-character">Character {movie.character}</p>
+                {!movie.character ? (
+                  <p className="actor-character">
+                    There is no information about the cast
+                  </p>
+                ) : (
+                  <p className="actor-character">Character {movie.character}</p>
+                )}
               </div>
             </li>
           ))}

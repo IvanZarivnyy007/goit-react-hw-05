@@ -3,33 +3,39 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const MovieReviews = () => {
-  const [movie, SetMovie] = useState([]);
+  const [movie, SetMovies] = useState([]);
   const { moviesId } = useParams();
 
   useEffect(() => {
     getMovieReviews(moviesId)
       .then((data) => {
-        SetMovie(data.results[0]);
+        SetMovies(data.results);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [moviesId]);
 
+  if (movie.length === 0) {
+    return <p>No information</p>;
+  }
+
   return (
     <div>
       <div className="movie-card">
         <div className="reviews-section">
-          <div key={movie.id} className="review-card">
-            <div className="review-content">
-              <h3>{movie.author}</h3>
-              <p>{movie.content}</p>
-              <p>{new Date(movie.created_at).toLocaleDateString()}</p>
-              <a href={movie.url} target="_blank" rel="noopener noreferrer">
-                Read more
-              </a>
+          {movie.map((review) => (
+            <div key={review.id} className="review-card">
+              <div className="review-content">
+                <h3>{review.author}</h3>
+                <p>{review.content}</p>
+                <p>{new Date(review.created_at).toLocaleDateString()}</p>
+                <a href={review.url} target="_blank" rel="noopener noreferrer">
+                  Load More
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
