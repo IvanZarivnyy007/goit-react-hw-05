@@ -11,13 +11,6 @@ const MoviesPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchParams({ name: search });
-    getMovieSearch(search)
-      .then((data) => {
-        SetMovies(data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   useEffect(() => {
